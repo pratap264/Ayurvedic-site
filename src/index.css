@@ -131,3 +131,75 @@ blockquote, dl, dd, h1, h2, h3, h4, h5, h6, hr, figure, p, pre {
 button:hover .btn-arrow {
   transform: rotate(45deg) translateX(2px) translateY(-2px);
 }
+
+/* =========================================
+   Responsive Utilities (Mobile & Tablet)
+   Using !important to override inline styles
+   ========================================= */
+
+@media (max-width: 1024px) {
+  /* Layout overrides */
+  .resp-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .resp-grid-2 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .resp-flex-col {
+    flex-direction: column !important;
+  }
+  
+  /* Spacing overrides */
+  .resp-px {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+  .resp-gap {
+    gap: 2rem !important;
+  }
+  
+  /* Text and specific tweaks */
+  .resp-text-center {
+    text-align: center !important;
+    align-items: center !important;
+  }
+  .resp-img-mx {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .resp-hide-circles {
+    display: none !important;
+  }
+  .mobile-hidden {
+    display: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .mobile-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .mobile-px {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  .mobile-text-xl {
+    font-size: 2.2rem !important;
+  }
+  .mobile-flex-wrap {
+    flex-wrap: wrap !important;
+  }
+  .mobile-gap-sm {
+    gap: 1rem !important;
+  }
+}
+
+.desktop-hidden {
+  display: none !important;
+}
+
+@media (max-width: 1024px) {
+  .desktop-hidden {
+    display: block !important;
+  }
+}

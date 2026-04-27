@@ -26,7 +26,7 @@ const testimonials = [
 
 const Testimonials = () => (
   <section id="testimonials" style={{ backgroundColor: 'rgb(30, 63, 51)', padding: '6rem 0' }}>
-    <div style={{ maxWidth: '82rem', margin: '0 auto', padding: '0 2.5rem' }}>
+    <div className="resp-px" style={{ maxWidth: '82rem', margin: '0 auto', padding: '0 2.5rem' }}>
 
       {/* Header */}
       <div style={{ marginBottom: '3.5rem' }}>
@@ -51,7 +51,7 @@ const Testimonials = () => (
       </div>
 
       {/* Cards */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
+      <div className="resp-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
         {testimonials.map(({ initials, name, label, quote, avatarBg }) => (
           <div
             key={name}

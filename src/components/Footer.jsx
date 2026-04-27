@@ -8,8 +8,9 @@ const Footer = () => (
       id="contact"
       style={{ backgroundColor: "#FAF6F0", padding: "6rem 0" }}
     >
-      <div style={{ maxWidth: "82rem", margin: "0 auto", padding: "0 2.5rem" }}>
+      <div className="resp-px" style={{ maxWidth: "82rem", margin: "0 auto", padding: "0 2.5rem" }}>
         <div
+          className="resp-grid resp-gap"
           style={{
             display: "grid",
             gridTemplateColumns: "1fr 1.1fr",
@@ -165,6 +166,7 @@ const Footer = () => (
           >
             {/* Name + Email row */}
             <div
+              className="resp-grid"
               style={{
                 display: "grid",
                 gridTemplateColumns: "1fr 1fr",
@@ -344,11 +346,11 @@ const Footer = () => (
     </section>
 
     {/* Footer bar */}
-    <footer style={{ backgroundColor: '#FAF6F0', padding: '4rem 2.5rem 2rem', borderTop: '1px solid rgba(47,111,94,0.1)' }}>
+    <footer className="resp-px" style={{ backgroundColor: '#FAF6F0', padding: '4rem 2.5rem 2rem', borderTop: '1px solid rgba(47,111,94,0.1)' }}>
       <div style={{ maxWidth: '82rem', margin: '0 auto' }}>
         
         {/* Main Footer Content */}
-        <div style={{ display: 'grid', gridTemplateColumns: '2fr 0.8fr 1.2fr', gap: '2rem', marginBottom: '3.5rem' }}>
+        <div className="resp-grid" style={{ display: 'grid', gridTemplateColumns: '2fr 0.8fr 1.2fr', gap: '2rem', marginBottom: '3.5rem' }}>
           
           {/* Brand */}
           <div style={{ paddingRight: '4rem' }}>

@@ -17,9 +17,9 @@ const doshas = [
 
 const Doshas = () => (
   <section id="doshas" style={{ backgroundColor: '#F5EBDD', padding: '6rem 0' }}>
-    <div style={{ maxWidth: '82rem', margin: '0 auto', padding: '0 2.5rem' }}>
+    <div className="resp-px" style={{ maxWidth: '82rem', margin: '0 auto', padding: '0 2.5rem' }}>
       {/* Header — 2 col layout */}
-      <div style={{
+      <div className="resp-grid resp-gap" style={{
         display: 'grid', gridTemplateColumns: '1fr 1fr',
         gap: '3rem', alignItems: 'center', marginBottom: '4rem',
       }}>
@@ -126,7 +126,7 @@ const Doshas = () => (
       </div>
 
       {/* Cards */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem' }}>
+      <div className="resp-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem' }}>
         {doshas.map(({ img, name, subtitle, color, bg, qualities, desc }) => (
           <div key={name} style={{ backgroundColor: '#fff', borderRadius: '1.5rem', overflow: 'hidden', boxShadow: '0 8px 30px rgba(44,53,49,0.07)', transition: 'transform 0.3s, box-shadow 0.3s', cursor: 'default' }}
             onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-8px)'; e.currentTarget.style.boxShadow = '0 20px 50px rgba(44,53,49,0.12)'; }}

@@ -75,6 +75,7 @@ const Hero = () => (
     }}
   >
     <div
+      className="resp-px resp-grid resp-gap"
       style={{
         maxWidth: "82rem",
         margin: "0 auto",
@@ -245,6 +246,7 @@ const Hero = () => (
 
       {/* RIGHT SIDE */}
       <div
+        className="resp-hide-circles"
         style={{ position: "relative", height: "480px", marginTop: "-3rem" }}
       >
         <DoshaCircle

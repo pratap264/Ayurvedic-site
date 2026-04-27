@@ -38,10 +38,10 @@ const services = [
 
 const Services = () => (
   <section id="services" style={{ backgroundColor: '#FAF6F0', padding: '6rem 0' }}>
-    <div style={{ maxWidth: '82rem', margin: '0 auto', padding: '0 2.5rem' }}>
+    <div className="resp-px" style={{ maxWidth: '82rem', margin: '0 auto', padding: '0 2.5rem' }}>
 
       {/* Top row: heading left, description right */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'end', marginBottom: '3.5rem' }}>
+      <div className="resp-grid resp-gap" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'end', marginBottom: '3.5rem' }}>
 
         {/* Left heading */}
         <div>
@@ -75,7 +75,7 @@ const Services = () => (
       </div>
 
       {/* Cards — 4 columns */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1.2rem' }}>
+      <div className="resp-grid-2 mobile-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '1.2rem' }}>
         {services.map(({ Icon, iconColor, iconBg, title, titleColor, desc }) => (
           <div
             key={title}

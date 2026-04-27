@@ -36,7 +36,7 @@ const products = [
 
 const Products = () => (
   <section id="products" style={{ backgroundColor: '#F5EBDD', padding: '6rem 0' }}>
-    <div style={{ maxWidth: '82rem', margin: '0 auto', padding: '0 2.5rem' }}>
+    <div className="resp-px" style={{ maxWidth: '82rem', margin: '0 auto', padding: '0 2.5rem' }}>
 
       {/* Top row */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '3rem', gap: '2rem', flexWrap: 'wrap' }}>
@@ -115,7 +115,7 @@ const Products = () => (
       </div>
 
       {/* Product cards */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
+      <div className="resp-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
         {products.map(({ title, subtitle, gradient }) => (
           <div
             key={title}

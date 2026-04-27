@@ -5,6 +5,7 @@ import doctorPortrait from "../assets/doctor_portrait_1777205058300.png";
 const About = () => (
   <section id="about" style={{ backgroundColor: "#FAF6F0", padding: "6rem 0" }}>
     <div
+      className="resp-px resp-grid resp-gap"
       style={{
         maxWidth: "82rem",
         margin: "0 auto",
@@ -23,6 +24,7 @@ const About = () => (
             overflow: "hidden",
             aspectRatio: "3/4",
             maxWidth: "400px",
+            margin: "0 auto",
             boxShadow: "0 20px 60px rgba(44,53,49,0.12)",
           }}
         >
@@ -170,6 +172,7 @@ const About = () => (
 
         {/* Cards */}
         <div
+          className="resp-grid"
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(3, 1fr)",

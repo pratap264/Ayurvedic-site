@@ -54,7 +54,7 @@ const articles = [
 
 const Journal = () => (
   <section id="journal" style={{ backgroundColor: '#FAF6F0', padding: '6rem 0' }}>
-    <div style={{ maxWidth: '82rem', margin: '0 auto', padding: '0 2.5rem' }}>
+    <div className="resp-px" style={{ maxWidth: '82rem', margin: '0 auto', padding: '0 2.5rem' }}>
 
       {/* Header row */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '3.5rem', flexWrap: 'wrap', gap: '1rem' }}>
@@ -93,7 +93,7 @@ const Journal = () => (
       </div>
 
       {/* Articles grid */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
+      <div className="resp-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
         {articles.map(({ tag, readTime, title, excerpt, accent, tagColor }) => (
           <div
             key={title}
