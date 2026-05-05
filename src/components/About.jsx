@@ -1,6 +1,6 @@
 import React from "react";
 import { Leaf, HeartPulse, Award } from "lucide-react";
-import doctorPortrait from "../assets/doctor_portrait_1777205058300.png";
+import doctorPortrait from "../assets/prajakta_garud.png";
 
 const About = () => (
   <section id="about" style={{ backgroundColor: "#FAF6F0", padding: "6rem 0" }}>
