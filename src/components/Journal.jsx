@@ -1,11 +1,18 @@
 import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
+import tips1 from '../assets/main/tips-1.png';
+import tips2 from '../assets/main/tips-2.png';
+import tips3 from '../assets/main/tips-3.png';
+import tips4 from '../assets/main/tips-4.png';
+import tips5 from '../assets/main/tips-5.png';
+import tips6 from '../assets/main/tips-6.png';
 
 const articles = [
   {
     tag: 'SKIN',
     readTime: '5 MIN READ',
     title: 'Ayurvedic Skincare Beyond the Jar',
+    image: tips1,
     excerpt: 'True skin health begins in the gut. Here\'s how your digestion, sleep and dosha shape what shows up on your face.',
     accent: 'rgba(47, 111, 94, 0.18)',
     tagColor: 'rgb(47, 111, 94)',
@@ -14,6 +21,7 @@ const articles = [
     tag: 'HORMONES',
     readTime: '7 MIN READ',
     title: 'PCOS, Gently: An Ayurvedic Roadmap',
+    image: tips2,
     excerpt: 'A Pitta-Kapha condition at its root — how classical herbs, diet shifts and daily rhythm can restore hormonal balance.',
     accent: 'rgba(201, 76, 61, 0.15)',
     tagColor: 'rgb(201, 76, 61)',
@@ -22,6 +30,7 @@ const articles = [
     tag: 'DETOX',
     readTime: '6 MIN READ',
     title: 'The Quiet Power of a 7-Day Detox',
+    image: tips3,
     excerpt: 'What Panchakarma really does — and why a gentle seasonal cleanse changes how you feel in your body all year long.',
     accent: 'rgba(111, 163, 168, 0.18)',
     tagColor: 'rgb(74, 107, 96)',
@@ -30,6 +39,7 @@ const articles = [
     tag: 'DAILY RHYTHM',
     readTime: '4 MIN READ',
     title: 'Dinacharya: The Morning Routine That Actually Works',
+    image: tips4,
     excerpt: 'Oil pulling, tongue scraping, warm water — why these simple acts done in order can shift your energy from the first hour.',
     accent: 'rgba(47, 111, 94, 0.12)',
     tagColor: 'rgb(47, 111, 94)',
@@ -38,6 +48,7 @@ const articles = [
     tag: 'GUT',
     readTime: '6 MIN READ',
     title: 'Your Gut Is Talking. Are You Listening?',
+    image: tips5,
     excerpt: 'Bloating, acid reflux, irregular hunger — Ayurveda reads these as messages from Agni, your digestive fire.',
     accent: 'rgba(180, 120, 60, 0.15)',
     tagColor: 'rgb(150, 90, 40)',
@@ -46,6 +57,7 @@ const articles = [
     tag: 'SLEEP',
     readTime: '5 MIN READ',
     title: 'Why You Wake at 3am (and How to Stop)',
+    image: tips6,
     excerpt: 'According to the Ayurvedic clock, 2–4am is Vata time. Here\'s what that means for your nervous system — and what helps.',
     accent: 'rgba(74, 107, 96, 0.15)',
     tagColor: 'rgb(47, 111, 94)',
@@ -94,7 +106,7 @@ const Journal = () => (
 
       {/* Articles grid */}
       <div className="resp-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
-        {articles.map(({ tag, readTime, title, excerpt, accent, tagColor }) => (
+        {articles.map(({ tag, readTime, title, excerpt, image, tagColor }) => (
           <div
             key={title}
             style={{
@@ -110,11 +122,12 @@ const Journal = () => (
             onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-6px)'; e.currentTarget.style.boxShadow = '0 20px 40px rgba(44,53,49,0.11)'; }}
             onMouseLeave={e => { e.currentTarget.style.transform = 'none'; e.currentTarget.style.boxShadow = '0 4px 20px rgba(44,53,49,0.06)'; }}
           >
-            {/* Accent block */}
+            {/* Image block */}
             <div style={{
               height: '180px',
-              backgroundColor: accent.replace('rgba', 'rgba').replace(')', ', 1)').replace(/[\d.]+\)$/, '1)'),
-              background: `radial-gradient(circle at 40% 40%, ${accent}, rgba(245,235,221,0.4))`,
+              backgroundImage: `linear-gradient(to top, rgba(30, 63, 51, 0.14), rgba(30, 63, 51, 0.02)), url(${image})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
               display: 'flex', alignItems: 'flex-end',
               padding: '1.2rem',
             }}>
