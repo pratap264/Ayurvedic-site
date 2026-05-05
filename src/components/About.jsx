@@ -1,31 +1,70 @@
 import React from "react";
-import { Leaf, HeartPulse, Award } from "lucide-react";
+import { Leaf, HeartPulse, Shield } from "lucide-react";
 import doctorPortrait from "../assets/prajakta_garud.png";
 
 const About = () => (
-  <section id="about" style={{ backgroundColor: "#FAF6F0", padding: "6rem 0" }}>
+  <section id="about" style={{ 
+    background: "linear-gradient(180deg, #FDFBF7 0%, #F5EBDD 100%)", 
+    padding: "7rem 0",
+    position: "relative",
+    overflow: "hidden"
+  }}>
+    {/* Subtle Background Decoration */}
+    <div style={{
+      position: "absolute",
+      top: "-10%",
+      right: "-5%",
+      width: "600px",
+      height: "600px",
+      borderRadius: "50%",
+      background: "radial-gradient(circle, rgba(47, 111, 94, 0.04) 0%, transparent 70%)",
+      zIndex: 0,
+      pointerEvents: "none"
+    }} />
+
     <div
       className="resp-px resp-grid resp-gap"
       style={{
+        position: "relative",
+        zIndex: 1,
         maxWidth: "82rem",
         margin: "0 auto",
         padding: "0 2.5rem",
         display: "grid",
         gridTemplateColumns: "1fr 1.15fr",
-        gap: "3rem",
+        gap: "4rem",
         alignItems: "center",
       }}
     >
-      {/* Image */}
-      <div style={{ position: "relative" }}>
+      {/* Image Side */}
+      <div style={{ position: "relative", padding: "2rem 0" }}>
+        {/* Decorative Arch Outline behind image */}
+        <div
+          className="mobile-hidden"
+          style={{
+            position: "absolute",
+            top: "0.5rem",
+            bottom: "3.5rem",
+            left: "10%",
+            right: "5%",
+            border: "1.5px solid rgba(47, 111, 94, 0.25)",
+            borderRadius: "15rem 15rem 2rem 2rem",
+            zIndex: 0,
+            transform: "translate(-1.5rem, -1.5rem)",
+          }}
+        />
+
+        {/* Main Image Container */}
         <div
           style={{
-            borderRadius: "2rem",
+            position: "relative",
+            zIndex: 1,
+            borderRadius: "15rem 15rem 2rem 2rem", // Traditional Arch
             overflow: "hidden",
             aspectRatio: "3/4",
-            maxWidth: "400px",
+            maxWidth: "380px",
             margin: "0 auto",
-            boxShadow: "0 20px 60px rgba(44,53,49,0.12)",
+            boxShadow: "0 25px 50px rgba(47, 111, 94, 0.15)",
           }}
         >
           <img
@@ -38,32 +77,50 @@ const About = () => (
               display: "block",
             }}
           />
+          {/* Inner Gradient Overlay for depth */}
+          <div style={{
+            position: "absolute",
+            inset: 0,
+            background: "linear-gradient(to top, rgba(30, 63, 51, 0.5) 0%, transparent 35%)",
+            pointerEvents: "none"
+          }} />
         </div>
 
         {/* Badge */}
         <div
           style={{
             position: "absolute",
-            bottom: "2rem",
-            left: "1.5rem",
+            bottom: "1rem",
+            right: "5%",
             backgroundColor: "rgba(255,255,255,0.92)",
-            backdropFilter: "blur(10px)",
-            borderRadius: "0.875rem",
-            padding: "0.85rem 1.2rem",
-            boxShadow: "0 8px 30px rgba(44,53,49,0.12)",
+            backdropFilter: "blur(12px)",
+            borderRadius: "1.2rem",
+            padding: "1rem 1.5rem",
+            boxShadow: "0 15px 35px rgba(30, 63, 51, 0.12)",
             display: "flex",
             alignItems: "center",
-            gap: "0.7rem",
+            gap: "1rem",
+            zIndex: 2,
+            border: "1px solid rgba(47, 111, 94, 0.08)",
           }}
         >
-          <Award size={20} color="rgb(47, 111, 94)" strokeWidth={1.5} />
+          <div style={{
+            backgroundColor: "#E8F3F0",
+            padding: "0.6rem",
+            borderRadius: "50%",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center"
+          }}>
+            <Shield size={24} color="rgb(47, 111, 94)" strokeWidth={1.5} />
+          </div>
           <div>
             <div
               style={{
                 fontFamily: "Outfit, system-ui, sans-serif",
                 fontWeight: 600,
-                fontSize: "0.85rem",
-                color: "rgb(47, 111, 94)",
+                fontSize: "0.95rem",
+                color: "rgb(30, 63, 51)",
               }}
             >
               MD Panchakarma
@@ -71,169 +128,255 @@ const About = () => (
             <div
               style={{
                 fontFamily: "Outfit, system-ui, sans-serif",
-                fontSize: "0.6rem",
-                letterSpacing: "0.18em",
+                fontSize: "0.65rem",
+                letterSpacing: "0.15em",
                 textTransform: "uppercase",
                 color: "rgb(74, 107, 96)",
-                marginTop: "0.1rem",
+                marginTop: "0.15rem",
               }}
             >
-              CERTIFIED PRACTITIONER
+              Certified Practitioner
             </div>
           </div>
         </div>
       </div>
 
-      {/* Text */}
+      {/* Text Side */}
       <div>
         {/* Label */}
         <div
           style={{
             display: "flex",
             alignItems: "center",
-            gap: "0.75rem",
-            marginBottom: "1.4rem",
+            gap: "1rem",
+            marginBottom: "1.5rem",
           }}
         >
           <span
             style={{
-              width: "2rem",
-              height: "1px",
-              backgroundColor: "rgb(47, 111, 94)",
-              display: "inline-block",
-            }}
-          />
-          <span
-            style={{
               fontFamily: "Outfit, system-ui, sans-serif",
-              fontSize: "0.7rem",
-              letterSpacing: "0.22em",
+              fontSize: "0.75rem",
+              letterSpacing: "0.25em",
               color: "rgb(47, 111, 94)",
               fontWeight: 600,
               textTransform: "uppercase",
             }}
           >
-            ABOUT THE DOCTOR
+            About The Doctor
           </span>
+          <span
+            style={{
+              flex: 1,
+              height: "1px",
+              background: "linear-gradient(90deg, rgba(47, 111, 94, 0.3) 0%, transparent 100%)",
+            }}
+          />
         </div>
 
         {/* Heading */}
         <h2
           style={{
             fontFamily: '"Cormorant Garamond", serif',
-            fontSize: "clamp(2.25rem, 3vw, 3rem)",
+            fontSize: "clamp(2.5rem, 4vw, 3.5rem)",
             color: "rgb(30, 63, 51)",
-            fontWeight: 300,
-            lineHeight: 1.1,
-            letterSpacing: "-0.025em",
-            marginBottom: "1.8rem",
+            fontWeight: 400,
+            lineHeight: 1.15,
+            letterSpacing: "-0.01em",
+            marginBottom: "2rem",
           }}
         >
           A practice where ancient{" "}
-          <em style={{ color: "rgb(47, 111, 94)", fontStyle: "italic" }}>
+          <em style={{ 
+            color: "rgb(201, 76, 61)", 
+            fontStyle: "italic",
+            paddingRight: "0.1em"
+          }}>
             wisdom
           </em>{" "}
           meets present-day living.
         </h2>
 
         {/* Body paragraphs */}
-        <p
-          style={{
-            fontFamily: "Outfit, system-ui, sans-serif",
-            fontSize: "1.02rem",
-            color: "rgb(74, 107, 96)",
-            lineHeight: 1.625,
-            marginBottom: "1.2rem",
-          }}
-        >
-          I'm{" "}
-          <strong style={{ color: "#000", fontWeight: 700 }}>
-            Vd. Prajakta Garud
-          </strong>
-          , an Ayurvedic physician with a postgraduate specialisation in
-          Panchakarma. Over the last 7+ years I've walked alongside hundreds of
-          patients — through stubborn skin concerns, hormonal imbalances,
-          chronic pain, gut trouble, and the quiet exhaustion that modern living
-          quietly accumulates.
-        </p>
-        <p
-          style={{
-            fontFamily: "Outfit, system-ui, sans-serif",
-            fontSize: "1.02rem",
-            color: "rgb(74, 107, 96)",
-            lineHeight: 1.625,
-            marginBottom: "2.5rem",
-          }}
-        >
-          My approach is unhurried. I listen first. Then we work, together,
-          through diet, daily rhythm (<em>dinacharya</em>), classical therapies,
-          and herbal protocols that fit the life you actually live.
-        </p>
+        <div style={{ position: "relative" }}>
+          {/* Decorative Quote Mark */}
+          <span style={{
+            position: "absolute",
+            top: "-1.5rem",
+            left: "-1.5rem",
+            fontSize: "5rem",
+            fontFamily: '"Cormorant Garamond", serif',
+            color: "rgba(47, 111, 94, 0.08)",
+            lineHeight: 1,
+            zIndex: -1,
+            pointerEvents: "none"
+          }}>
+            "
+          </span>
+          
+          <p
+            style={{
+              fontFamily: "Outfit, system-ui, sans-serif",
+              fontSize: "1.1rem",
+              color: "rgb(74, 107, 96)",
+              lineHeight: 1.7,
+              marginBottom: "1.2rem",
+              fontWeight: 300,
+            }}
+          >
+            I'm{" "}
+            <strong style={{ 
+              color: "rgb(30, 63, 51)", 
+              fontWeight: 600,
+              fontFamily: '"Cormorant Garamond", serif',
+              fontSize: "1.4rem"
+            }}>
+              Vd. Prajakta Garud
+            </strong>
+            , an Ayurvedic physician with a postgraduate specialisation in
+            Panchakarma. Over the last 7+ years I've walked alongside hundreds of
+            patients — through stubborn skin concerns, hormonal imbalances,
+            chronic pain, gut trouble, and the quiet exhaustion that modern living
+            quietly accumulates.
+          </p>
+          <p
+            style={{
+              fontFamily: "Outfit, system-ui, sans-serif",
+              fontSize: "1.1rem",
+              color: "rgb(74, 107, 96)",
+              lineHeight: 1.7,
+              marginBottom: "3.5rem",
+              fontWeight: 300,
+            }}
+          >
+            My approach is unhurried. I listen first. Then we work, together,
+            through diet, daily rhythm (<em style={{ color: "rgb(47, 111, 94)" }}>dinacharya</em>), classical therapies,
+            and herbal protocols that fit the life you actually live.
+          </p>
+        </div>
 
-        {/* Cards */}
-        <div
-          className="resp-grid"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: "1rem",
-          }}
-        >
-          {[
-            {
-              Icon: Leaf,
-              title: "Panchakarma",
-              desc: "Classical detox & rejuvenation",
-            },
-            {
-              Icon: HeartPulse,
-              title: "Personalised",
-              desc: "Prakriti-based treatment plans",
-              highlight: true,
-            },
-            { Icon: Award, title: "Trusted", desc: "7+ years of practice" },
-          ].map(({ Icon, title, desc, highlight }) => (
-            <div
-              key={title}
-              style={{
-                backgroundColor: "#fff",
-                borderRadius: "1rem",
-                padding: "1.2rem 1.1rem",
-                boxShadow: "0 4px 16px rgba(44,53,49,0.06)",
-              }}
-            >
-              <div style={{ marginBottom: "0.6rem" }}>
-                <Icon
-                  size={20}
-                  color={highlight ? "rgb(220, 60, 60)" : "rgb(47, 111, 94)"}
-                  strokeWidth={1.5}
-                />
-              </div>
+        {/* Journey Timeline */}
+        <div style={{ position: "relative" }}>
+          {/* Horizontal Connecting Line */}
+          <div
+            className="mobile-hidden"
+            style={{
+              position: "absolute",
+              top: "26px",
+              left: "16%",
+              right: "16%",
+              height: "2px",
+              background: "linear-gradient(90deg, rgba(47, 111, 94, 0.15) 0%, rgba(201, 76, 61, 0.15) 50%, rgba(214, 138, 58, 0.15) 100%)",
+              zIndex: 0,
+            }}
+          />
+
+          <div
+            className="resp-grid"
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(3, 1fr)",
+              gap: "1.5rem",
+              position: "relative",
+              zIndex: 1,
+            }}
+          >
+            {[
+              {
+                step: "Step 1",
+                Icon: Leaf,
+                title: "Diagnose",
+                desc: "(Prakriti Analysis)",
+                theme: { bg: "#E8F3F0", icon: "#2F6F5E" }
+              },
+              {
+                step: "Step 2",
+                Icon: HeartPulse,
+                title: "Personalised",
+                desc: "Plan",
+                theme: { bg: "#FDECEA", icon: "#C94C3D" }
+              },
+              {
+                step: "Step 3",
+                Icon: Shield,
+                title: "Healing & Detox",
+                desc: "(Panchakarma)",
+                theme: { bg: "#FDF3E7", icon: "#D68A3A" }
+              },
+            ].map(({ step, Icon, title, desc, theme }) => (
               <div
+                key={step}
                 style={{
-                  fontFamily: '"Cormorant Garamond", serif',
-                  fontWeight: 500,
-                  fontSize: "1.25rem",
-                  lineHeight: "1.75rem",
-                  color: "rgb(47, 111, 94)",
-                  marginBottom: "0.3rem",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  textAlign: "center",
                 }}
               >
-                {title}
+                <div
+                  style={{
+                    width: "52px",
+                    height: "52px",
+                    borderRadius: "50%",
+                    backgroundColor: theme.bg,
+                    boxShadow: `0 8px 20px ${theme.icon}25`,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    marginBottom: "1.25rem",
+                    transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = "translateY(-4px)";
+                    e.currentTarget.style.boxShadow = `0 12px 24px ${theme.icon}35`;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = "translateY(0)";
+                    e.currentTarget.style.boxShadow = `0 8px 20px ${theme.icon}25`;
+                  }}
+                >
+                  <Icon
+                    size={24}
+                    color={theme.icon}
+                    strokeWidth={1.75}
+                  />
+                </div>
+                <div
+                  style={{
+                    fontFamily: "Outfit, system-ui, sans-serif",
+                    fontSize: "0.7rem",
+                    letterSpacing: "0.2em",
+                    textTransform: "uppercase",
+                    color: theme.icon,
+                    fontWeight: 700,
+                    marginBottom: "0.5rem",
+                  }}
+                >
+                  {step}
+                </div>
+                <div
+                  style={{
+                    fontFamily: '"Cormorant Garamond", serif',
+                    fontWeight: 600,
+                    fontSize: "1.4rem",
+                    lineHeight: "1.2",
+                    color: "rgb(30, 63, 51)",
+                    marginBottom: "0.3rem",
+                  }}
+                >
+                  {title}
+                </div>
+                <div
+                  style={{
+                    fontFamily: "Outfit, system-ui, sans-serif",
+                    fontSize: "0.95rem",
+                    color: "rgb(74, 107, 96)",
+                  }}
+                >
+                  {desc}
+                </div>
               </div>
-              <div
-                style={{
-                  fontFamily: "Outfit, system-ui, sans-serif",
-                  fontSize: "0.875rem",
-                  lineHeight: "1.25rem",
-                  color: "rgb(74, 107, 96)",
-                  marginTop: "0.25rem",
-                }}
-              >
-                {desc}
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </div>
