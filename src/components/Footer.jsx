@@ -1,5 +1,17 @@
 import React from "react";
-import { MessageCircle, Mail, MapPin, Leaf } from "lucide-react";
+import { Mail, MapPin, Leaf } from "lucide-react";
+
+const WhatsAppSVG = ({ size = 24, color = "currentColor", strokeWidth }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill={color}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+  </svg>
+);
 
 const Footer = () => (
   <>
@@ -8,7 +20,10 @@ const Footer = () => (
       id="contact"
       style={{ backgroundColor: "#FAF6F0", padding: "6rem 0" }}
     >
-      <div className="resp-px" style={{ maxWidth: "82rem", margin: "0 auto", padding: "0 2.5rem" }}>
+      <div
+        className="resp-px"
+        style={{ maxWidth: "82rem", margin: "0 auto", padding: "0 2.5rem" }}
+      >
         <div
           className="resp-grid resp-gap"
           style={{
@@ -82,7 +97,7 @@ const Footer = () => (
             {/* Contact rows */}
             {[
               {
-                Icon: MessageCircle,
+                Icon: WhatsAppSVG,
                 label: "WHATSAPP",
                 value: "+91 8624011185",
                 iconBg: "rgba(47,111,94,0.1)",
@@ -91,7 +106,7 @@ const Footer = () => (
               {
                 Icon: Mail,
                 label: "EMAIL",
-                value: "prajaktagarud@gmail.com",
+                value: "prajaktagarud29@gmail.com",
                 iconBg: "rgba(47,111,94,0.1)",
                 iconColor: "rgb(47, 111, 94)",
               },
@@ -148,7 +163,25 @@ const Footer = () => (
                       fontWeight: 500,
                     }}
                   >
-                    {value}
+                    {label === "EMAIL" ? (
+                      <a
+                        href={`mailto:${value}`}
+                        style={{
+                          color: "rgb(30, 63, 51)",
+                          textDecoration: "none",
+                        }}
+                        onMouseEnter={(e) =>
+                          (e.currentTarget.style.color = "rgb(47, 111, 94)")
+                        }
+                        onMouseLeave={(e) =>
+                          (e.currentTarget.style.color = "rgb(30, 63, 51)")
+                        }
+                      >
+                        {value}
+                      </a>
+                    ) : (
+                      value
+                    )}
                   </div>
                 </div>
               </div>
@@ -346,106 +379,223 @@ const Footer = () => (
     </section>
 
     {/* Footer bar */}
-    <footer className="resp-px" style={{ backgroundColor: '#FAF6F0', padding: '4rem 2.5rem 2rem', borderTop: '1px solid rgba(47,111,94,0.1)' }}>
-      <div style={{ maxWidth: '82rem', margin: '0 auto' }}>
-        
+    <footer
+      className="resp-px"
+      style={{
+        backgroundColor: "#FAF6F0",
+        padding: "4rem 2.5rem 2rem",
+        borderTop: "1px solid rgba(47,111,94,0.1)",
+      }}
+    >
+      <div style={{ maxWidth: "82rem", margin: "0 auto" }}>
         {/* Main Footer Content */}
-        <div className="resp-grid" style={{ display: 'grid', gridTemplateColumns: '2fr 0.8fr 1.2fr', gap: '2rem', marginBottom: '3.5rem' }}>
-          
+        <div
+          className="resp-grid"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "2fr 0.8fr 1.2fr",
+            gap: "2rem",
+            marginBottom: "3.5rem",
+          }}
+        >
           {/* Brand */}
-          <div style={{ paddingRight: '4rem' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem', marginBottom: '1.2rem' }}>
-              <div style={{ width: 36, height: 36, borderRadius: '50%', backgroundColor: 'rgba(47,111,94,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <div style={{ paddingRight: "4rem" }}>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "0.8rem",
+                marginBottom: "1.2rem",
+              }}
+            >
+              <div
+                style={{
+                  width: 36,
+                  height: 36,
+                  borderRadius: "50%",
+                  backgroundColor: "rgba(47,111,94,0.1)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
                 <Leaf size={18} color="rgb(47, 111, 94)" strokeWidth={1.5} />
               </div>
-              <span style={{ fontFamily: '"Cormorant Garamond", serif', fontSize: '1.5rem', color: 'rgb(30, 63, 51)', fontWeight: 400 }}>
+              <span
+                style={{
+                  fontFamily: '"Cormorant Garamond", serif',
+                  fontSize: "1.5rem",
+                  color: "rgb(30, 63, 51)",
+                  fontWeight: 400,
+                }}
+              >
                 Vd. Prajakta Garud
               </span>
             </div>
-            <p style={{
-              fontFamily: 'Outfit, system-ui, sans-serif',
-              fontSize: '0.95rem', color: 'rgb(74, 107, 96)',
-              lineHeight: 1.7, margin: 0
-            }}>
-              Ayurvedic care rooted in classical Panchakarma tradition — for skin, hormones, pain, and the rhythm of everyday life.
+            <p
+              style={{
+                fontFamily: "Outfit, system-ui, sans-serif",
+                fontSize: "0.95rem",
+                color: "rgb(74, 107, 96)",
+                lineHeight: 1.7,
+                margin: 0,
+              }}
+            >
+              Ayurvedic care rooted in classical Panchakarma tradition — for
+              skin, hormones, pain, and the rhythm of everyday life.
             </p>
           </div>
 
           {/* Visit */}
           <div>
-            <h4 style={{
-              fontFamily: 'Outfit, system-ui, sans-serif',
-              fontSize: '0.65rem', letterSpacing: '0.18em',
-              textTransform: 'uppercase', color: 'rgb(74, 107, 96)',
-              opacity: 0.7, marginBottom: '1.2rem', marginTop: 0
-            }}>VISIT</h4>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
-              {['About', 'Doshas', 'Services', 'Apothecary', 'Journal'].map(link => (
-                <a key={link} href={`#${link.toLowerCase()}`} style={{
-                  fontFamily: 'Outfit, system-ui, sans-serif',
-                  fontSize: '0.95rem', color: 'rgb(30, 63, 51)',
-                  textDecoration: 'none', transition: 'color 0.2s',
-                  fontWeight: 500
-                }}
-                onMouseEnter={e => e.currentTarget.style.color = 'rgb(47, 111, 94)'}
-                onMouseLeave={e => e.currentTarget.style.color = 'rgb(30, 63, 51)'}
-                >{link}</a>
-              ))}
+            <h4
+              style={{
+                fontFamily: "Outfit, system-ui, sans-serif",
+                fontSize: "0.65rem",
+                letterSpacing: "0.18em",
+                textTransform: "uppercase",
+                color: "rgb(74, 107, 96)",
+                opacity: 0.7,
+                marginBottom: "1.2rem",
+                marginTop: 0,
+              }}
+            >
+              VISIT
+            </h4>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "0.8rem",
+              }}
+            >
+              {["About", "Doshas", "Services", "Products", "Journal"].map(
+                (link) => (
+                  <a
+                    key={link}
+                    href={`#${link.toLowerCase()}`}
+                    style={{
+                      fontFamily: "Outfit, system-ui, sans-serif",
+                      fontSize: "0.95rem",
+                      color: "rgb(30, 63, 51)",
+                      textDecoration: "none",
+                      transition: "color 0.2s",
+                      fontWeight: 500,
+                    }}
+                    onMouseEnter={(e) =>
+                      (e.currentTarget.style.color = "rgb(47, 111, 94)")
+                    }
+                    onMouseLeave={(e) =>
+                      (e.currentTarget.style.color = "rgb(30, 63, 51)")
+                    }
+                  >
+                    {link}
+                  </a>
+                ),
+              )}
             </div>
           </div>
 
           {/* Reach */}
           <div>
-            <h4 style={{
-              fontFamily: 'Outfit, system-ui, sans-serif',
-              fontSize: '0.65rem', letterSpacing: '0.18em',
-              textTransform: 'uppercase', color: 'rgb(74, 107, 96)',
-              opacity: 0.7, marginBottom: '1.2rem', marginTop: 0
-            }}>REACH</h4>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
+            <h4
+              style={{
+                fontFamily: "Outfit, system-ui, sans-serif",
+                fontSize: "0.65rem",
+                letterSpacing: "0.18em",
+                textTransform: "uppercase",
+                color: "rgb(74, 107, 96)",
+                opacity: 0.7,
+                marginBottom: "1.2rem",
+                marginTop: 0,
+              }}
+            >
+              REACH
+            </h4>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "0.8rem",
+              }}
+            >
               {[
-                { text: 'consult@prajaktagarud.in', href: 'mailto:consult@prajaktagarud.in' },
-                { text: '+91 98765 43210', href: 'tel:+919876543210' },
-                { text: 'Pune, Maharashtra', href: null }
-              ].map(({text, href}, i) => (
+                {
+                  text: "prajaktagarud29@gmail.com",
+                  href: "mailto:prajaktagarud29@gmail.com",
+                },
+                { text: "+91 86240 11185", href: "tel:+918624011185" },
+                { text: "Pune, Maharashtra", href: null },
+              ].map(({ text, href }, i) =>
                 href ? (
-                  <a key={i} href={href} style={{
-                    fontFamily: 'Outfit, system-ui, sans-serif',
-                    fontSize: '0.95rem', color: 'rgb(30, 63, 51)',
-                    textDecoration: 'none', fontWeight: 500
-                  }}>{text}</a>
+                  <a
+                    key={i}
+                    href={href}
+                    style={{
+                      fontFamily: "Outfit, system-ui, sans-serif",
+                      fontSize: "0.95rem",
+                      color: "rgb(30, 63, 51)",
+                      textDecoration: "none",
+                      fontWeight: 500,
+                    }}
+                  >
+                    {text}
+                  </a>
                 ) : (
-                  <span key={i} style={{
-                    fontFamily: 'Outfit, system-ui, sans-serif',
-                    fontSize: '0.95rem', color: 'rgb(30, 63, 51)',
-                    fontWeight: 500
-                  }}>{text}</span>
-                )
-              ))}
+                  <span
+                    key={i}
+                    style={{
+                      fontFamily: "Outfit, system-ui, sans-serif",
+                      fontSize: "0.95rem",
+                      color: "rgb(30, 63, 51)",
+                      fontWeight: 500,
+                    }}
+                  >
+                    {text}
+                  </span>
+                ),
+              )}
             </div>
           </div>
-
         </div>
 
         {/* Bottom Bar */}
-        <div style={{
-          display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem',
-          paddingTop: '1.5rem', borderTop: '1px solid rgba(47,111,94,0.15)'
-        }}>
-          <p style={{
-            fontFamily: 'Outfit, system-ui, sans-serif',
-            fontSize: '0.85rem', color: 'rgb(74, 107, 96)',
-            margin: 0
-          }}>
-            © {new Date().getFullYear()} Vd. Prajakta Garud. All rights reserved.
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            flexWrap: "wrap",
+            gap: "1rem",
+            paddingTop: "1.5rem",
+            borderTop: "1px solid rgba(47,111,94,0.15)",
+          }}
+        >
+          <p
+            style={{
+              fontFamily: "Outfit, system-ui, sans-serif",
+              fontSize: "0.85rem",
+              color: "rgb(74, 107, 96)",
+              margin: 0,
+            }}
+          >
+            © {new Date().getFullYear()} Vd. Prajakta Garud. All rights
+            reserved.
           </p>
 
-          <p style={{
-            fontFamily: '"Cormorant Garamond", serif',
-            fontSize: '1.05rem', color: 'rgb(47, 111, 94)',
-            margin: 0, fontStyle: 'italic'
-          }}>
-            <span style={{ fontStyle: 'normal', fontWeight: 500 }}>सर्वे भवन्तु सुखिनः</span> · May all be free from illness.
+          <p
+            style={{
+              fontFamily: '"Cormorant Garamond", serif',
+              fontSize: "1.05rem",
+              color: "rgb(47, 111, 94)",
+              margin: 0,
+              fontStyle: "italic",
+            }}
+          >
+            <span style={{ fontStyle: "normal", fontWeight: 500 }}>
+              सर्वे भवन्तु सुखिनः
+            </span>{" "}
+            · May all be free from illness.
           </p>
         </div>
       </div>
@@ -453,7 +603,7 @@ const Footer = () => (
 
     {/* Floating WhatsApp */}
     <a
-      href="https://wa.me/919876543210"
+      href="https://wa.me/918624011185"
       target="_blank"
       rel="noopener noreferrer"
       style={{
@@ -480,7 +630,7 @@ const Footer = () => (
         e.currentTarget.style.boxShadow = "0 4px 20px rgba(37,211,102,0.4)";
       }}
     >
-      <MessageCircle size={24} color="#fff" strokeWidth={2} />
+      <WhatsAppSVG size={28} color="#fff" strokeWidth={2} />
     </a>
   </>
 );
