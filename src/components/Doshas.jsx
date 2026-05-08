@@ -2,6 +2,7 @@ import React from 'react';
 import kaphaImg from '../assets/main/kapha.jpg';
 import pittaImg from '../assets/main/pitta.jpg';
 import vataImg from '../assets/main/vata.jpg';
+import { useI18n } from '../i18n';
 
 const doshas = [
   { img: kaphaImg, name: 'Kapha', subtitle: 'Earth & Water', color: '#2F6F5E', bg: '#EDF7F4',
@@ -15,7 +16,14 @@ const doshas = [
     desc: 'Vata is the energy of movement — creative, quick, enthusiastic, and full of vitality when in balance.' },
 ];
 
-const Doshas = () => (
+const Doshas = () => {
+  const { t } = useI18n();
+  const translatedDoshas = doshas.map((dosha, index) => ({
+    ...dosha,
+    ...t.doshas.items[index],
+  }));
+
+  return (
   <section id="doshas" style={{ backgroundColor: '#F5EBDD', padding: '6rem 0' }}>
     <div className="resp-px" style={{ maxWidth: '82rem', margin: '0 auto', padding: '0 2.5rem' }}>
       {/* Header — 2 col layout */}
@@ -28,7 +36,7 @@ const Doshas = () => (
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
             <span style={{ width: '2rem', height: '1px', backgroundColor: 'rgb(47, 111, 94)', display: 'inline-block' }} />
-            <span style={{ fontFamily: 'Outfit, system-ui, sans-serif', fontSize: '0.7rem', letterSpacing: '0.22em', color: 'rgb(47, 111, 94)', fontWeight: 600, textTransform: 'uppercase' }}>KNOW YOUR CONSTITUTION</span>
+            <span style={{ fontFamily: 'Outfit, system-ui, sans-serif', fontSize: '0.7rem', letterSpacing: '0.22em', color: 'rgb(47, 111, 94)', fontWeight: 600, textTransform: 'uppercase' }}>{t.doshas.label}</span>
           </div>
           <h2 style={{
             fontFamily: '"Cormorant Garamond", serif',
@@ -39,7 +47,7 @@ const Doshas = () => (
             letterSpacing: '-0.02em',
             marginBottom: '1.4rem',
           }}>
-            The three <em style={{ color: 'rgb(47, 111, 94)', fontStyle: 'italic' }}>doshas</em> — the elemental rhythms that shape how you live, eat, sleep and heal.
+            {t.doshas.headingStart} <em style={{ color: 'rgb(47, 111, 94)', fontStyle: 'italic' }}>{t.doshas.headingEm}</em> - {t.doshas.headingEnd}
           </h2>
           <p style={{
             fontFamily: 'Outfit, system-ui, sans-serif',
@@ -47,7 +55,7 @@ const Doshas = () => (
             color: 'rgb(74, 107, 96)',
             lineHeight: 1.625,
           }}>
-            Every body is a unique blend of Vata, Pitta and Kapha. Understanding yours is the first step toward a routine that actually feels natural.
+            {t.doshas.description}
           </p>
         </div>
 
@@ -79,7 +87,7 @@ const Doshas = () => (
             lineHeight: 1.2, marginBottom: '1rem',
             color: '#fff',
           }}>
-            Which dosha is running your life right now?
+            {t.doshas.ctaTitle}
           </h3>
 
           <p style={{
@@ -87,11 +95,11 @@ const Doshas = () => (
             fontSize: '0.92rem', color: 'rgba(245,235,221,0.85)',
             lineHeight: 1.6, marginBottom: '1.6rem',
           }}>
-            Discover your dominant dosha — understand why you feel drained, inflamed, or scattered — and get personalised tips to restore balance.
+            {t.doshas.ctaText}
           </p>
 
           <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-            {['Skin', 'Gut', 'Sleep', 'Hormones', 'Energy'].map(tag => (
+            {t.doshas.ctaTags.map(tag => (
               <span key={tag} style={{
                 backgroundColor: 'rgba(255,255,255,0.12)',
                 borderRadius: '9999px',
@@ -104,6 +112,9 @@ const Doshas = () => (
           </div>
 
           <button
+            onClick={() => {
+              window.location.href = '#contact';
+            }}
             style={{
               marginTop: '1.8rem',
               display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
@@ -120,14 +131,14 @@ const Doshas = () => (
             onMouseEnter={e => { e.currentTarget.style.backgroundColor = '#fff'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
             onMouseLeave={e => { e.currentTarget.style.backgroundColor = 'rgb(245, 235, 221)'; e.currentTarget.style.transform = 'translateY(0)'; }}
           >
-            Book Consultation ↗
+            {t.common.book} ->
           </button>
         </div>
       </div>
 
       {/* Cards */}
       <div className="resp-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '2rem' }}>
-        {doshas.map(({ img, name, subtitle, color, bg, qualities, desc }) => (
+        {translatedDoshas.map(({ img, name, subtitle, color, bg, qualities, desc }) => (
           <div key={name} style={{ backgroundColor: '#fff', borderRadius: '1.5rem', overflow: 'hidden', boxShadow: '0 8px 30px rgba(44,53,49,0.07)', transition: 'transform 0.3s, box-shadow 0.3s', cursor: 'default' }}
             onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-8px)'; e.currentTarget.style.boxShadow = '0 20px 50px rgba(44,53,49,0.12)'; }}
             onMouseLeave={e => { e.currentTarget.style.transform = 'none'; e.currentTarget.style.boxShadow = '0 8px 30px rgba(44,53,49,0.07)'; }}
@@ -155,6 +166,7 @@ const Doshas = () => (
       </div>
     </div>
   </section>
-);
+  );
+};
 
 export default Doshas;

@@ -1,8 +1,21 @@
 import React from "react";
 import { Leaf, HeartPulse, Shield } from "lucide-react";
 import doctorPortrait from "../assets/prajakta_garud.png";
+import { useI18n } from "../i18n";
 
-const About = () => (
+const About = () => {
+  const { t } = useI18n();
+  const journey = t.about.steps.map((step, index) => ({
+    ...step,
+    Icon: [Leaf, HeartPulse, Shield][index],
+    theme: [
+      { bg: "#E8F3F0", icon: "#2F6F5E" },
+      { bg: "#FDECEA", icon: "#C94C3D" },
+      { bg: "#FDF3E7", icon: "#D68A3A" },
+    ][index],
+  }));
+
+  return (
   <section id="about" style={{ 
     background: "linear-gradient(180deg, #FDFBF7 0%, #F5EBDD 100%)", 
     padding: "7rem 0",
@@ -123,7 +136,7 @@ const About = () => (
                 color: "rgb(30, 63, 51)",
               }}
             >
-              MD Panchakarma
+              {t.about.badgeTitle}
             </div>
             <div
               style={{
@@ -135,7 +148,7 @@ const About = () => (
                 marginTop: "0.15rem",
               }}
             >
-              Certified Practitioner
+              {t.about.badgeSubtitle}
             </div>
           </div>
         </div>
@@ -162,7 +175,7 @@ const About = () => (
               textTransform: "uppercase",
             }}
           >
-            About The Doctor
+            {t.about.label}
           </span>
           <span
             style={{
@@ -185,15 +198,15 @@ const About = () => (
             marginBottom: "2rem",
           }}
         >
-          A practice where ancient{" "}
+          {t.about.headingStart}{" "}
           <em style={{ 
             color: "rgb(201, 76, 61)", 
             fontStyle: "italic",
             paddingRight: "0.1em"
           }}>
-            wisdom
+            {t.about.headingEm}
           </em>{" "}
-          meets present-day living.
+          {t.about.headingEnd}
         </h2>
 
         {/* Body paragraphs */}
@@ -223,20 +236,16 @@ const About = () => (
               fontWeight: 300,
             }}
           >
-            I'm{" "}
+            {t.about.introStart}{" "}
             <strong style={{ 
               color: "rgb(30, 63, 51)", 
               fontWeight: 600,
               fontFamily: '"Cormorant Garamond", serif',
               fontSize: "1.4rem"
             }}>
-              Vd. Prajakta Garud
+              {t.common.brandFull}
             </strong>
-            , an Ayurvedic physician with a postgraduate specialisation in
-            Panchakarma. Over the last 7+ years I've walked alongside hundreds of
-            patients — through stubborn skin concerns, hormonal imbalances,
-            chronic pain, gut trouble, and the quiet exhaustion that modern living
-            quietly accumulates.
+            {t.about.introEnd}
           </p>
           <p
             style={{
@@ -248,9 +257,7 @@ const About = () => (
               fontWeight: 300,
             }}
           >
-            My approach is unhurried. I listen first. Then we work, together,
-            through diet, daily rhythm (<em style={{ color: "rgb(47, 111, 94)" }}>dinacharya</em>), classical therapies,
-            and herbal protocols that fit the life you actually live.
+            {t.about.approach}
           </p>
         </div>
 
@@ -280,29 +287,7 @@ const About = () => (
               zIndex: 1,
             }}
           >
-            {[
-              {
-                step: "Step 1",
-                Icon: Leaf,
-                title: "Diagnose",
-                desc: "(Prakriti Analysis)",
-                theme: { bg: "#E8F3F0", icon: "#2F6F5E" }
-              },
-              {
-                step: "Step 2",
-                Icon: HeartPulse,
-                title: "Personalised",
-                desc: "Plan",
-                theme: { bg: "#FDECEA", icon: "#C94C3D" }
-              },
-              {
-                step: "Step 3",
-                Icon: Shield,
-                title: "Healing & Detox",
-                desc: "(Panchakarma)",
-                theme: { bg: "#FDF3E7", icon: "#D68A3A" }
-              },
-            ].map(({ step, Icon, title, desc, theme }) => (
+            {journey.map(({ step, Icon, title, desc, theme }) => (
               <div
                 key={step}
                 style={{
@@ -381,6 +366,7 @@ const About = () => (
       </div>
     </div>
   </section>
-);
+  );
+};
 
 export default About;

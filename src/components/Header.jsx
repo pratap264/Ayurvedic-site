@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Leaf, Menu, X } from 'lucide-react';
+import { Globe2, Leaf, Menu, X } from 'lucide-react';
+import { useI18n } from '../i18n';
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { t, toggleLanguage } = useI18n();
+  const navIds = ['about', 'doshas', 'services', 'products', 'journal', 'contact'];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -34,15 +37,15 @@ const Header = () => {
             <Leaf size={22} color="rgb(47, 111, 94)" strokeWidth={1.5} />
           </div>
           <div>
-            <div className="font-serif" style={{ fontSize: '1.5rem', color: 'rgb(47, 111, 94)', lineHeight: 1 }}>Vd. Prajakta</div>
-            <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.65rem', letterSpacing: '0.25em', color: 'rgb(74, 107, 96)', textTransform: 'uppercase', marginTop: '0.3rem' }}>AYURVEDA</div>
+            <div className="font-serif" style={{ fontSize: '1.5rem', color: 'rgb(47, 111, 94)', lineHeight: 1 }}>{t.common.brandShort}</div>
+            <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.65rem', letterSpacing: '0.25em', color: 'rgb(74, 107, 96)', textTransform: 'uppercase', marginTop: '0.3rem' }}>{t.common.brandSub}</div>
           </div>
         </div>
 
         {/* Nav */}
         <nav className="mobile-hidden" style={{ display: 'flex', gap: '2.5rem' }}>
-          {['About', 'Doshas', 'Services', 'Products', 'Journal', 'Contact'].map(item => (
-            <a key={item} href={`#${item.toLowerCase()}`} className="nav-link" style={{
+          {t.common.nav.map((item, index) => (
+            <a key={item} href={`#${navIds[index]}`} className="nav-link" style={{
               fontFamily: 'Outfit, system-ui, sans-serif', fontSize: '1rem', color: 'rgb(74, 107, 96)',
               textDecoration: 'none', transition: 'color 0.2s', fontWeight: 500
             }}
@@ -52,8 +55,31 @@ const Header = () => {
           ))}
         </nav>
 
+        <div className="mobile-hidden" style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
+          <button
+            aria-label={t.language.aria}
+            onClick={toggleLanguage}
+            style={{
+              display: 'inline-flex', alignItems: 'center', gap: '0.45rem',
+              padding: '0.72rem 1rem', borderRadius: '9999px',
+              backgroundColor: 'rgba(255,255,255,0.55)', color: 'rgb(47, 111, 94)',
+              fontFamily: 'Outfit, system-ui, sans-serif', fontWeight: 700, fontSize: '0.82rem',
+              border: '1px solid rgba(47, 111, 94, 0.22)', cursor: 'pointer',
+              transition: 'all 0.2s',
+              whiteSpace: 'nowrap',
+            }}
+            onMouseEnter={e => { e.currentTarget.style.backgroundColor = '#fff'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
+            onMouseLeave={e => { e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.55)'; e.currentTarget.style.transform = 'translateY(0)'; }}
+          >
+            <Globe2 size={16} strokeWidth={2} /> {t.language.switchTo}
+          </button>
+
         {/* CTA */}
-        <button className="mobile-hidden" style={{
+        <button
+          onClick={() => {
+            window.location.href = '#contact';
+          }}
+          style={{
           padding: '0.75rem 1.8rem', borderRadius: '9999px',
           backgroundColor: 'rgb(47, 111, 94)', color: 'white',
           fontFamily: 'Outfit, system-ui, sans-serif', fontWeight: 600, fontSize: '0.9rem',
@@ -64,8 +90,9 @@ const Header = () => {
           onMouseEnter={e => { e.target.style.backgroundColor = 'rgb(30, 63, 51)'; e.target.style.transform = 'translateY(-1px)'; }}
           onMouseLeave={e => { e.target.style.backgroundColor = 'rgb(47, 111, 94)'; e.target.style.transform = 'translateY(0)'; }}
         >
-          Book Consultation
+          {t.common.book}
         </button>
+        </div>
 
         {/* Hamburger for mobile */}
         <div className="desktop-hidden" onClick={() => setMobileMenuOpen(true)}>
@@ -99,8 +126,8 @@ const Header = () => {
                 <Leaf size={20} color="rgb(47, 111, 94)" strokeWidth={1.5} />
               </div>
               <div>
-                <div className="font-serif" style={{ fontSize: '1.35rem', color: 'rgb(47, 111, 94)', lineHeight: 1 }}>Vd. Prajakta</div>
-                <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.55rem', letterSpacing: '0.25em', color: 'rgb(74, 107, 96)', textTransform: 'uppercase', marginTop: '0.2rem' }}>AYURVEDA</div>
+                <div className="font-serif" style={{ fontSize: '1.35rem', color: 'rgb(47, 111, 94)', lineHeight: 1 }}>{t.common.brandShort}</div>
+                <div style={{ fontFamily: 'Inter, sans-serif', fontSize: '0.55rem', letterSpacing: '0.25em', color: 'rgb(74, 107, 96)', textTransform: 'uppercase', marginTop: '0.2rem' }}>{t.common.brandSub}</div>
               </div>
             </div>
             {/* Close */}
@@ -110,8 +137,8 @@ const Header = () => {
           {/* Links container */}
           <div style={{ padding: '2.5rem', flex: 1, overflowY: 'auto' }}>
             <nav style={{ display: 'flex', flexDirection: 'column', gap: '1.4rem', alignItems: 'flex-start' }}>
-              {['About', 'Doshas', 'Services', 'Products', 'Journal', 'Contact'].map(item => (
-                <a key={item} href={`#${item.toLowerCase()}`} 
+              {t.common.nav.map((item, index) => (
+                <a key={item} href={`#${navIds[index]}`} 
                   onClick={() => setMobileMenuOpen(false)}
                   style={{
                     fontFamily: 'Outfit, system-ui, sans-serif', fontSize: '1.2rem', color: 'rgb(30, 63, 51)',
@@ -120,6 +147,25 @@ const Header = () => {
                   {item}
                 </a>
               ))}
+
+              <button
+                aria-label={t.language.aria}
+                onClick={toggleLanguage}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                  padding: '0.85rem 1.1rem',
+                  borderRadius: '9999px',
+                  border: '1px solid rgba(47,111,94,0.22)',
+                  backgroundColor: 'rgba(255,255,255,0.6)',
+                  color: 'rgb(47, 111, 94)',
+                  fontFamily: 'Outfit, system-ui, sans-serif',
+                  fontWeight: 700,
+                }}
+              >
+                <Globe2 size={17} /> {t.language.switchTo}
+              </button>
               
               {/* Button */}
               <button 
@@ -137,7 +183,7 @@ const Header = () => {
                   boxShadow: '0 4px 14px rgba(47,111,94,0.15)',
                 }}
               >
-                Book Consultation
+                {t.common.book}
               </button>
               
               {/* Text below button */}
@@ -149,7 +195,7 @@ const Header = () => {
                 marginTop: '1.5rem',
                 opacity: 0.9
               }}>
-                modern care, and personalised lifestyle guidance — for skin, gut, hormones and the quiet work of feeling like yourself again.
+                {t.hero.description}
               </p>
             </nav>
           </div>

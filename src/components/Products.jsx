@@ -3,6 +3,7 @@ import product1 from "../assets/main/product-1.png";
 import product2 from "../assets/main/products-2.png";
 import product3 from "../assets/main/products-3.png";
 import product4 from "../assets/main/products-4.png";
+import { useI18n } from "../i18n";
 
 const WhatsAppSVG = ({ size = 24, color = "currentColor" }) => (
   <svg
@@ -34,7 +35,14 @@ const products = [
   },
 ];
 
-const Products = () => (
+const Products = () => {
+  const { t } = useI18n();
+  const translatedProducts = products.map((product, index) => ({
+    ...product,
+    ...t.products.items[index],
+  }));
+
+  return (
   <section
     id="products"
     style={{ backgroundColor: "#F5EBDD", padding: "6rem 0" }}
@@ -82,7 +90,7 @@ const Products = () => (
                 textTransform: "uppercase",
               }}
             >
-              Suvarn Prashan
+              {t.products.label}
             </span>
           </div>
           {/* Heading */}
@@ -97,7 +105,7 @@ const Products = () => (
               marginBottom: "1rem",
             }}
           >
-            Healing formulas, made with intention.
+            {t.products.heading}
           </h2>
           <p
             style={{
@@ -107,8 +115,7 @@ const Products = () => (
               lineHeight: 1.7,
             }}
           >
-            Classical churnas, herbal creams and cleansers — prepared from
-            traditional recipes, prescribed to your constitution.
+            {t.products.description}
           </p>
         </div>
 
@@ -128,7 +135,7 @@ const Products = () => (
           onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.7")}
           onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
         >
-          Enquire Now →
+          {t.products.enquire}
         </a>
 
       </div>
@@ -147,7 +154,7 @@ const Products = () => (
       >
         <img
           src={product1}
-          alt="Suvarn Prashan Range"
+          alt={t.products.imageAlt}
           style={{
             width: "100%",
             height: "auto",
@@ -166,7 +173,7 @@ const Products = () => (
           gap: "1.5rem",
         }}
       >
-        {products.map(({ title, subtitle, image }) => (
+        {translatedProducts.map(({ title, subtitle, image }) => (
           <div
             key={title}
             style={{
@@ -283,13 +290,14 @@ const Products = () => (
               onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.7")}
               onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
             >
-              ENQUIRE ON WHATSAPP →
+              {t.products.enquireWhatsapp}
             </a>
           </div>
         ))}
       </div>
     </div>
   </section>
-);
+  );
+};
 
 export default Products;

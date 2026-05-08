@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { Mail, MapPin, Leaf } from "lucide-react";
+import { useI18n } from "../i18n";
 
 const WhatsAppSVG = ({ size = 24, color = "currentColor", strokeWidth }) => (
   <svg
@@ -13,7 +14,12 @@ const WhatsAppSVG = ({ size = 24, color = "currentColor", strokeWidth }) => (
   </svg>
 );
 
-const Footer = () => (
+const Footer = () => {
+  const { t } = useI18n();
+  const [whatsappPromptHidden, setWhatsappPromptHidden] = useState(false);
+  const navIds = ["about", "doshas", "services", "products", "journal"];
+
+  return (
   <>
     {/* Contact Section */}
     <section
@@ -61,7 +67,7 @@ const Footer = () => (
                   textTransform: "uppercase",
                 }}
               >
-                BEGIN THE CONVERSATION
+                {t.footer.label}
               </span>
             </div>
 
@@ -76,7 +82,7 @@ const Footer = () => (
                 marginBottom: "1.4rem",
               }}
             >
-              Book a consultation.
+              {t.footer.heading}
             </h2>
 
             <p
@@ -89,35 +95,36 @@ const Footer = () => (
                 maxWidth: "400px",
               }}
             >
-              Consultation available at associated clinics &amp; online. Share a
-              little about what's going on, and we'll be in touch within a day
-              to set up a time that suits you.
+              {t.footer.description}
             </p>
 
             {/* Contact rows */}
             {[
               {
                 Icon: WhatsAppSVG,
-                label: "WHATSAPP",
+                label: t.footer.contactLabels.whatsapp,
+                type: "whatsapp",
                 value: "+91 8624011185",
                 iconBg: "rgba(47,111,94,0.1)",
                 iconColor: "rgb(47, 111, 94)",
               },
               {
                 Icon: Mail,
-                label: "EMAIL",
+                label: t.footer.contactLabels.email,
+                type: "email",
                 value: "prajaktagarud29@gmail.com",
                 iconBg: "rgba(47,111,94,0.1)",
                 iconColor: "rgb(47, 111, 94)",
               },
               {
                 Icon: MapPin,
-                label: "CLINIC",
-                value: "Pune, Maharashtra",
+                label: t.footer.contactLabels.clinic,
+                type: "clinic",
+                value: t.footer.clinic,
                 iconBg: "rgba(201,76,61,0.1)",
                 iconColor: "rgb(201, 76, 61)",
               },
-            ].map(({ Icon, label, value, iconBg, iconColor }) => (
+            ].map(({ Icon, label, type, value, iconBg, iconColor }) => (
               <div
                 key={label}
                 style={{
@@ -163,7 +170,7 @@ const Footer = () => (
                       fontWeight: 500,
                     }}
                   >
-                    {label === "EMAIL" ? (
+                    {type === "email" ? (
                       <a
                         href={`mailto:${value}`}
                         style={{
@@ -208,10 +215,10 @@ const Footer = () => (
               }}
             >
               {[
-                { label: "NAME", placeholder: "Your full name", type: "text" },
+                { label: t.footer.form.name, placeholder: t.footer.form.namePlaceholder, type: "text" },
                 {
-                  label: "EMAIL",
-                  placeholder: "you@example.com",
+                  label: t.footer.form.email,
+                  placeholder: t.footer.form.emailPlaceholder,
                   type: "email",
                 },
               ].map(({ label, placeholder, type }) => (
@@ -268,11 +275,11 @@ const Footer = () => (
                   marginBottom: "0.4rem",
                 }}
               >
-                PHONE
+                {t.footer.form.phone}
               </label>
               <input
                 type="tel"
-                placeholder="+91 ..."
+                placeholder={t.footer.form.phonePlaceholder}
                 style={{
                   width: "100%",
                   boxSizing: "border-box",
@@ -307,11 +314,11 @@ const Footer = () => (
                   marginBottom: "0.4rem",
                 }}
               >
-                WHAT BRINGS YOU HERE?
+                {t.footer.form.concern}
               </label>
               <textarea
                 rows={4}
-                placeholder="A few lines about what you'd like help with..."
+                placeholder={t.footer.form.concernPlaceholder}
                 style={{
                   width: "100%",
                   boxSizing: "border-box",
@@ -358,7 +365,7 @@ const Footer = () => (
                 (e.currentTarget.style.backgroundColor = "rgb(47, 111, 94)")
               }
             >
-              REQUEST CONSULTATION
+              {t.footer.form.submit}
             </button>
 
             <p
@@ -371,7 +378,7 @@ const Footer = () => (
                 opacity: 0.7,
               }}
             >
-              We respond within 24 hours, Monday to Saturday.
+              {t.footer.form.note}
             </p>
           </div>
         </div>
@@ -429,7 +436,7 @@ const Footer = () => (
                   fontWeight: 400,
                 }}
               >
-                Vd. Prajakta Garud
+                {t.common.brandFull}
               </span>
             </div>
             <p
@@ -441,8 +448,7 @@ const Footer = () => (
                 margin: 0,
               }}
             >
-              Ayurvedic care rooted in classical Panchakarma tradition — for
-              skin, hormones, pain, and the rhythm of everyday life.
+              {t.footer.footerText}
             </p>
           </div>
 
@@ -460,7 +466,7 @@ const Footer = () => (
                 marginTop: 0,
               }}
             >
-              VISIT
+              {t.footer.visit}
             </h4>
             <div
               style={{
@@ -469,11 +475,11 @@ const Footer = () => (
                 gap: "0.8rem",
               }}
             >
-              {["About", "Doshas", "Services", "Products", "Journal"].map(
-                (link) => (
+              {t.common.footerNav.map(
+                (link, index) => (
                   <a
                     key={link}
-                    href={`#${link.toLowerCase()}`}
+                    href={`#${navIds[index]}`}
                     style={{
                       fontFamily: "Outfit, system-ui, sans-serif",
                       fontSize: "0.95rem",
@@ -510,7 +516,7 @@ const Footer = () => (
                 marginTop: 0,
               }}
             >
-              REACH
+              {t.footer.reach}
             </h4>
             <div
               style={{
@@ -525,7 +531,7 @@ const Footer = () => (
                   href: "mailto:prajaktagarud29@gmail.com",
                 },
                 { text: "+91 86240 11185", href: "tel:+918624011185" },
-                { text: "Pune, Maharashtra", href: null },
+                { text: t.footer.clinic, href: null },
               ].map(({ text, href }, i) =>
                 href ? (
                   <a
@@ -579,8 +585,7 @@ const Footer = () => (
               margin: 0,
             }}
           >
-            © {new Date().getFullYear()} Vd. Prajakta Garud. All rights
-            reserved.
+            © {new Date().getFullYear()} {t.common.brandFull}. {t.footer.rights}
           </p>
 
           <p
@@ -593,19 +598,43 @@ const Footer = () => (
             }}
           >
             <span style={{ fontStyle: "normal", fontWeight: 500 }}>
-              सर्वे भवन्तु सुखिनः
+              {t.footer.mantra}
             </span>{" "}
-            · May all be free from illness.
+            · {t.footer.mantraMeaning}
           </p>
         </div>
       </div>
     </footer>
 
     {/* Floating WhatsApp */}
+    {!whatsappPromptHidden && (
+      <div className="whatsapp-nudge">
+        <button
+          className="whatsapp-nudge-close"
+          type="button"
+          aria-label="Close WhatsApp prompt"
+          onClick={() => setWhatsappPromptHidden(true)}
+        >
+          ×
+        </button>
+        <a
+          className="whatsapp-nudge-link"
+          href="https://wa.me/918624011185"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={t.footer.whatsappPrompt.text}
+        >
+          <span className="whatsapp-nudge-title">{t.footer.whatsappPrompt.title}</span>
+          <span className="whatsapp-nudge-text">{t.footer.whatsappPrompt.text}</span>
+        </a>
+      </div>
+    )}
+
     <a
       href="https://wa.me/918624011185"
       target="_blank"
       rel="noopener noreferrer"
+      onClick={() => setWhatsappPromptHidden(false)}
       style={{
         position: "fixed",
         bottom: "2rem",
@@ -633,6 +662,7 @@ const Footer = () => (
       <WhatsAppSVG size={28} color="#fff" strokeWidth={2} />
     </a>
   </>
-);
+  );
+};
 
 export default Footer;

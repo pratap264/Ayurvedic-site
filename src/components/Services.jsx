@@ -4,8 +4,12 @@ import service1 from '../assets/main/service-1.png';
 import service2 from '../assets/main/service-2.png';
 import service3 from '../assets/main/service-3.png';
 import service4 from '../assets/main/service-4.png';
+import { useI18n } from '../i18n';
 
-const Services = () => (
+const Services = () => {
+  const { t } = useI18n();
+
+  return (
   <section id="services" style={{ backgroundColor: '#FAF6F0', padding: '7rem 0' }}>
     <div className="resp-px" style={{ maxWidth: '82rem', margin: '0 auto', padding: '0 2.5rem' }}>
 
@@ -16,7 +20,7 @@ const Services = () => (
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.4rem' }}>
             <span style={{ width: '2rem', height: '1px', backgroundColor: 'rgb(47, 111, 94)', display: 'inline-block' }} />
-            <span style={{ fontFamily: 'Outfit, system-ui, sans-serif', fontSize: '0.7rem', letterSpacing: '0.22em', color: 'rgb(47, 111, 94)', fontWeight: 600, textTransform: 'uppercase' }}>AREAS OF EXPERTISE</span>
+            <span style={{ fontFamily: 'Outfit, system-ui, sans-serif', fontSize: '0.7rem', letterSpacing: '0.22em', color: 'rgb(47, 111, 94)', fontWeight: 600, textTransform: 'uppercase' }}>{t.services.label}</span>
           </div>
           <h2 style={{
             fontFamily: '"Cormorant Garamond", serif',
@@ -26,7 +30,7 @@ const Services = () => (
             lineHeight: 1.15,
             letterSpacing: '-0.02em',
           }}>
-            What we work on, together.
+            {t.services.heading}
           </h2>
         </div>
 
@@ -39,7 +43,7 @@ const Services = () => (
             lineHeight: 1.75,
             fontWeight: 300,
           }}>
-            Every plan begins with a thorough <em style={{ fontStyle: 'italic', color: 'rgb(30, 63, 51)' }}>nadi pariksha</em> and a long conversation. Treatment follows the body — not a template.
+            {t.services.description}
           </p>
         </div>
       </div>
@@ -87,7 +91,7 @@ const Services = () => (
                 color: '#FFFFFF',
                 marginBottom: '1rem',
                 lineHeight: 1.1,
-              }}>Panchakarma</h3>
+              }}>{t.services.cards[0].title}</h3>
               <p style={{
                 fontFamily: 'Outfit, system-ui, sans-serif',
                 fontSize: '1.05rem',
@@ -96,11 +100,11 @@ const Services = () => (
                 fontWeight: 300,
                 marginBottom: '1.5rem'
               }}>
-                Our classical five-step detox program. This deep cellular cleanse is precisely sequenced to your constitution, removing deep-seated toxins and restoring your innate healing capacity.
+                {t.services.cards[0].desc}
               </p>
               {/* Highlighted Treatments */}
               <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap' }}>
-                {['Vamana', 'Virechana', 'Basti', 'Nasya', 'Raktamokshana'].map(item => (
+                {t.services.cards[0].tags.map(item => (
                   <span key={item} style={{
                     backgroundColor: 'rgba(255,255,255,0.15)',
                     padding: '0.35rem 0.8rem',
@@ -152,7 +156,7 @@ const Services = () => (
                 color: '#FFFFFF',
                 marginBottom: '1rem',
                 lineHeight: 1.1,
-              }}>Chronic Pain</h3>
+              }}>{t.services.cards[1].title}</h3>
               <p style={{
                 fontFamily: 'Outfit, system-ui, sans-serif',
                 fontSize: '1.05rem',
@@ -161,11 +165,11 @@ const Services = () => (
                 fontWeight: 300,
                 marginBottom: '1.5rem'
               }}>
-                Targeted, lasting relief for low back pain, stiff joints, sciatica, frozen shoulder, and migraines addressed through classical manual therapies and custom oral protocols.
+                {t.services.cards[1].desc}
               </p>
               {/* Highlighted Treatments */}
               <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap' }}>
-                {['Kati Basti', 'Abhyanga', 'Janu Basti', 'Oral Protocols'].map(item => (
+                {t.services.cards[1].tags.map(item => (
                   <span key={item} style={{
                     backgroundColor: 'rgba(255,255,255,0.15)',
                     padding: '0.35rem 0.8rem',
@@ -219,7 +223,7 @@ const Services = () => (
                   fontSize: '1.6rem',
                   fontWeight: 500,
                   color: '#FFFFFF',
-                }}>Skin & Hair Care</h3>
+                }}>{t.services.cards[2].title}</h3>
               </div>
               <p style={{
                 fontFamily: 'Outfit, system-ui, sans-serif',
@@ -229,11 +233,11 @@ const Services = () => (
                 fontWeight: 300,
                 marginBottom: '1.2rem'
               }}>
-                Healing from the gut and hormones outward, focusing on the root cause rather than just topicals.
+                {t.services.cards[2].desc}
               </p>
               {/* Highlighted Treatments */}
               <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-                {['Acne', 'Pigmentation', 'Eczema', 'Hair Fall'].map(item => (
+                {t.services.cards[2].tags.map(item => (
                   <span key={item} style={{
                     backgroundColor: 'rgba(255,255,255,0.15)',
                     padding: '0.25rem 0.7rem',
@@ -282,7 +286,7 @@ const Services = () => (
                   fontSize: '1.6rem',
                   fontWeight: 500,
                   color: '#FFFFFF',
-                }}>Lifestyle Guidance</h3>
+                }}>{t.services.cards[3].title}</h3>
               </div>
               <p style={{
                 fontFamily: 'Outfit, system-ui, sans-serif',
@@ -292,11 +296,11 @@ const Services = () => (
                 fontWeight: 300,
                 marginBottom: '1.2rem'
               }}>
-                Building sustainable lifestyle medicine for long-term health, tailored to your daily routines.
+                {t.services.cards[3].desc}
               </p>
               {/* Highlighted Treatments */}
               <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-                {['Dinacharya', 'Ritucharya', 'Sleep', 'Stress Care'].map(item => (
+                {t.services.cards[3].tags.map(item => (
                   <span key={item} style={{
                     backgroundColor: 'rgba(255,255,255,0.15)',
                     padding: '0.25rem 0.7rem',
@@ -317,6 +321,7 @@ const Services = () => (
 
     </div>
   </section>
-);
+  );
+};
 
 export default Services;

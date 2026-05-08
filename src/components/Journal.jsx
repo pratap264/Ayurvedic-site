@@ -6,6 +6,7 @@ import tips3 from '../assets/main/tips-3.png';
 import tips4 from '../assets/main/tips-4.png';
 import tips5 from '../assets/main/tips-5.png';
 import tips6 from '../assets/main/tips-6.png';
+import { useI18n } from '../i18n';
 
 const articles = [
   {
@@ -64,7 +65,14 @@ const articles = [
   },
 ];
 
-const Journal = () => (
+const Journal = () => {
+  const { t } = useI18n();
+  const translatedArticles = articles.map((article, index) => ({
+    ...article,
+    ...t.journal.articles[index],
+  }));
+
+  return (
   <section id="journal" style={{ backgroundColor: '#FAF6F0', padding: '6rem 0' }}>
     <div className="resp-px" style={{ maxWidth: '82rem', margin: '0 auto', padding: '0 2.5rem' }}>
 
@@ -73,7 +81,7 @@ const Journal = () => (
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.2rem' }}>
             <span style={{ width: '2rem', height: '1px', backgroundColor: 'rgb(47, 111, 94)', display: 'inline-block' }} />
-            <span style={{ fontFamily: 'Outfit, system-ui, sans-serif', fontSize: '0.7rem', letterSpacing: '0.22em', color: 'rgb(47, 111, 94)', fontWeight: 600, textTransform: 'uppercase' }}>HEALTH JOURNAL</span>
+            <span style={{ fontFamily: 'Outfit, system-ui, sans-serif', fontSize: '0.7rem', letterSpacing: '0.22em', color: 'rgb(47, 111, 94)', fontWeight: 600, textTransform: 'uppercase' }}>{t.journal.label}</span>
           </div>
           <h2 style={{
             fontFamily: '"Cormorant Garamond", serif',
@@ -83,7 +91,7 @@ const Journal = () => (
             lineHeight: 1.15,
             letterSpacing: '-0.02em',
           }}>
-            Notes &amp; health tips from the clinic.
+            {t.journal.heading}
           </h2>
         </div>
 
@@ -100,13 +108,13 @@ const Journal = () => (
           onMouseEnter={e => e.currentTarget.style.opacity = '0.7'}
           onMouseLeave={e => e.currentTarget.style.opacity = '1'}
         >
-          READ ALL <ArrowUpRight size={15} strokeWidth={2.5} />
+          {t.journal.readAll} <ArrowUpRight size={15} strokeWidth={2.5} />
         </a>
       </div>
 
       {/* Articles grid */}
       <div className="resp-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
-        {articles.map(({ tag, readTime, title, excerpt, image, tagColor }) => (
+        {translatedArticles.map(({ tag, readTime, title, excerpt, image, tagColor }) => (
           <div
             key={title}
             style={{
@@ -173,6 +181,7 @@ const Journal = () => (
 
     </div>
   </section>
-);
+  );
+};
 
 export default Journal;

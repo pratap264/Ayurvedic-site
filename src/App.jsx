@@ -8,22 +8,25 @@ import Products from './components/Products';
 import Journal from './components/Journal';
 import Testimonials from './components/Testimonials';
 import Footer from './components/Footer';
+import { LanguageProvider } from './i18n';
 
 function App() {
   return (
-    <div className="app">
-      <Header />
-      <main>
-        <Hero />
-        <About />
-        <Doshas />
-        <Services />
-        <Products />
-        <Journal />
-        <Testimonials />
-      </main>
-      <Footer />
-    </div>
+    <LanguageProvider>
+      <div className="app">
+        <Header />
+        <main>
+          <Hero />
+          <About />
+          <Doshas />
+          <Services />
+          <Products />
+          <Journal />
+          <Testimonials />
+        </main>
+        <Footer />
+      </div>
+    </LanguageProvider>
   );
 }
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useI18n } from '../i18n';
 
 const testimonials = [
   {
@@ -24,7 +25,14 @@ const testimonials = [
   },
 ];
 
-const Testimonials = () => (
+const Testimonials = () => {
+  const { t } = useI18n();
+  const translatedTestimonials = testimonials.map((testimonial, index) => ({
+    ...testimonial,
+    ...t.testimonials.items[index],
+  }));
+
+  return (
   <section id="testimonials" style={{ backgroundColor: 'rgb(30, 63, 51)', padding: '6rem 0' }}>
     <div className="resp-px" style={{ maxWidth: '82rem', margin: '0 auto', padding: '0 2.5rem' }}>
 
@@ -36,7 +44,7 @@ const Testimonials = () => (
             fontFamily: 'Outfit, system-ui, sans-serif',
             fontSize: '0.7rem', letterSpacing: '0.22em',
             color: 'rgba(245,235,221,0.7)', fontWeight: 600, textTransform: 'uppercase',
-          }}>PATIENT STORIES</span>
+          }}>{t.testimonials.label}</span>
         </div>
         <h2 style={{
           fontFamily: '"Cormorant Garamond", serif',
@@ -46,13 +54,13 @@ const Testimonials = () => (
           lineHeight: 1.15,
           letterSpacing: '-0.02em',
         }}>
-          Real bodies. <em style={{ fontStyle: 'italic', color: 'rgba(245,235,221,0.85)' }}>Real change.</em>
+          {t.testimonials.headingStart} <em style={{ fontStyle: 'italic', color: 'rgba(245,235,221,0.85)' }}>{t.testimonials.headingEm}</em>
         </h2>
       </div>
 
       {/* Cards */}
       <div className="resp-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
-        {testimonials.map(({ initials, name, label, quote, avatarBg }) => (
+        {translatedTestimonials.map(({ initials, name, label, quote, avatarBg }) => (
           <div
             key={name}
             style={{
@@ -73,7 +81,7 @@ const Testimonials = () => (
               color: 'rgb(201, 76, 61)',
               marginBottom: '1.2rem',
               opacity: 0.9,
-            }}>❝</div>
+            }}>"</div>
 
             {/* Quote text */}
             <p style={{
@@ -119,7 +127,7 @@ const Testimonials = () => (
               <div style={{
                 color: 'rgb(201, 76, 61)',
                 fontSize: '0.72rem', letterSpacing: '2px',
-              }}>★★★★★</div>
+              }}>*****</div>
             </div>
           </div>
         ))}
@@ -127,6 +135,7 @@ const Testimonials = () => (
 
     </div>
   </section>
-);
+  );
+};
 
 export default Testimonials;
